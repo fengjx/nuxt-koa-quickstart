@@ -1,7 +1,11 @@
+import { createServer } from 'http'
 import Koa from 'koa'
 import mount from 'koa-mount'
+import { Server } from 'socket.io'
+
 import { apiRouters } from './rest/api'
 import { adminRouters } from './rest/admin'
+import wsInit from './ws'
 
 const app = new Koa()
 
@@ -17,7 +21,14 @@ adminRouters.forEach((item, _) => {
 })
 app.use(mount('/admin', admin))
 
+const ws = new Koa()
+app.use(mount('/ws', ws))
+
+const httpServer = createServer(ws.callback())
+const options = {}
+wsInit(new Server(httpServer, options))
+
 export default {
-  path: '/rest',
-  handler: app.callback()
+  path: '/web',
+  handler: app
 }

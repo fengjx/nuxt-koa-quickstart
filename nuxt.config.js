@@ -5,6 +5,7 @@ export default {
    */
   ssr: true,
   target: 'server',
+  // https://zh.nuxtjs.org/docs/2.x/configuration-glossary/configuration-servermiddleware
   serverMiddleware: ['~/server/index.js'],
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -21,10 +22,10 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
+  css: ['vant/lib/index.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: ['@/plugins/vant'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

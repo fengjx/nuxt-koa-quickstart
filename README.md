@@ -1,6 +1,6 @@
 # nuxt-koa-quickstart
 
-nuxt + koa template
+nuxt + koa 项目脚手架
 
 ## Build Setup
 

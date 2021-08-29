@@ -11,6 +11,15 @@ module.exports = {
   plugins: [],
   // add your custom rules here
   rules: {
-    'no-multiple-empty-lines': [1, { max: 2 }]
+    'no-multiple-empty-lines': [1, { max: 2 }],
+    'no-console': 'off',
+    'no-restricted-syntax': [
+      'error',
+      {
+        selector:
+          "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
+        message: 'Unexpected property on console object was called'
+      }
+    ]
   }
 }
